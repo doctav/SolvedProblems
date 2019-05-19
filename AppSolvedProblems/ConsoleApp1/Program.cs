@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace ConsoleApp1
 {
@@ -16,6 +17,8 @@ namespace ConsoleApp1
             //WriteNNumbers();
             //PrintNumbersNotDivisible37();
             //SmallestAndLargest5();
+            //TriangleStars();
+            DecimalToBinary();
         }
 
         //1. Write a program that reads from the console three numbers of type int and prints their sum.
@@ -73,7 +76,7 @@ namespace ConsoleApp1
             Console.WriteLine("Input the second number");
             b = int.Parse(Console.ReadLine());
 
-            if(a>b)  //check if a<b. Otherwise, swap them.
+            if (a > b)  //check if a<b. Otherwise, swap them.
             {
                 int temp;
                 temp = a;
@@ -99,7 +102,7 @@ namespace ConsoleApp1
             a = double.Parse(Console.ReadLine());
             Console.WriteLine("Input the second number");
             b = double.Parse(Console.ReadLine());
-            if(a>b)
+            if (a > b)
                 Console.WriteLine($"The greater is {a}");
             else
                 Console.WriteLine($"The greater is {b}");
@@ -112,11 +115,11 @@ namespace ConsoleApp1
         static void FiveIntegersAndSum()
         {
             Console.WriteLine("6. Write a program that reads five integer numbers and prints their sum. If an invalid number is entered the program should prompt the user to enter another number(only once)");
-            int canRead = 0, i=1, sum=0;
-            while(i<=5 && canRead<2)
+            int canRead = 0, i = 1, sum = 0;
+            while (i <= 5 && canRead < 2)
             {
                 Console.WriteLine($"Input the number with the index {i}");
-                if(int.TryParse(Console.ReadLine(),out int currentNumber))
+                if (int.TryParse(Console.ReadLine(), out int currentNumber))
                 {
                     sum = sum + currentNumber;
                 }
@@ -131,7 +134,7 @@ namespace ConsoleApp1
             }
 
             //check if all the numbers are ok
-            if (canRead<2)
+            if (canRead < 2)
             {
                 Console.WriteLine($"The sum is {sum}\n");
             }
@@ -139,7 +142,7 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("Too many tries...Sorry...\n");
             }
-            
+
         }
 
         //7. Write a program that prints on the console the numbers from 1 to N. The number N should be read from the standard input.
@@ -164,7 +167,7 @@ namespace ConsoleApp1
             Console.WriteLine("The numbers are:");
             for (int i = 1; i <= n; i++)
             {
-                if(i%3!=0 && i%7!=0)
+                if (i % 3 != 0 && i % 7 != 0)
                     Console.WriteLine(i);
             }
         }
@@ -189,6 +192,56 @@ namespace ConsoleApp1
                     min = currentNumber;
             }
             Console.WriteLine($"Max={max}, Min={min}");
+        }
+
+        //10. Write program that outputs a triangle made of stars with variable size, depending on an input parameter. Look at the examples to get an idea. The input comes as a string number, which needs to be parsed to a number. The output is a series of lines printed on the console, forming a triangle of variable size.
+        static void TriangleStars()
+        {
+            Console.WriteLine("10. Write program that outputs a triangle made of stars with variable size, depending on an input parameter. Look at the examples to get an idea. The input comes as a string number, which needs to be parsed to a number. The output is a series of lines printed on the console, forming a triangle of variable size.");
+            Console.WriteLine("Input N (size of triangle)");
+            int n = int.Parse(Console.ReadLine());
+            
+            //the first half of the triangle
+            for (int i = 1; i <= n; i++)
+            {
+                //build the current line of stars (from 1 to i)
+                StringBuilder sb = new StringBuilder();
+                for (int j = 1; j <= i; j++)
+                {
+                    sb.Append("*");   //add a star to the current line
+                }
+                Console.WriteLine(sb.ToString());
+            }
+
+            //the second half of the triangle
+            for (int i = n-1; i >=1; i--)
+            {
+                //build the current line of stars (from 1 to i)
+                StringBuilder sb = new StringBuilder();
+                for (int j = 1; j <= i; j++)
+                {
+                    sb.Append("*");  //add a star to the current line
+                }
+                Console.WriteLine(sb.ToString());
+            }
+        }
+
+        //11. Write a program that converts a given number from decimal to binary notation (numeral system).
+        static void DecimalToBinary()
+        {
+            Console.WriteLine("11. Write a program that converts a given number from decimal to binary notation (numeral system).");
+            Console.WriteLine("Input N (decimal number)");
+            int n = int.Parse(Console.ReadLine());
+
+            string resultInBinary = "";
+            
+            while(n>0)
+            {
+                int rest = n % 2;
+                resultInBinary = rest + resultInBinary;
+                n = n / 2;
+            }
+            Console.WriteLine($"The binary value of {n} is {resultInBinary}");
         }
 
     }
