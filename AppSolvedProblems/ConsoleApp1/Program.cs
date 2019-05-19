@@ -8,17 +8,20 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World! Here are some basic solved problems...\n");
-            //SumOfThreeFromConsole();
-            //GreastestOfFiveNumbers();
-            //CirclePerimeterAndArea();
-            //DivisibleByFive();
-            //GreaterOfTwo();
-            //FiveIntegersAndSum();
-            //WriteNNumbers();
-            //PrintNumbersNotDivisible37();
-            //SmallestAndLargest5();
-            //TriangleStars();
+            SumOfThreeFromConsole();
+            GreastestOfFiveNumbers();
+            CirclePerimeterAndArea();
+            DivisibleByFive();
+            GreaterOfTwo();
+            FiveIntegersAndSum();
+            WriteNNumbers();
+            PrintNumbersNotDivisible37();
+            SmallestAndLargest5();
+            TriangleStars();
             DecimalToBinary();
+            RandomNumbers();
+            FizzBuzz();
+            CompanyManagerData();
         }
 
         //1. Write a program that reads from the console three numbers of type int and prints their sum.
@@ -200,7 +203,7 @@ namespace ConsoleApp1
             Console.WriteLine("10. Write program that outputs a triangle made of stars with variable size, depending on an input parameter. Look at the examples to get an idea. The input comes as a string number, which needs to be parsed to a number. The output is a series of lines printed on the console, forming a triangle of variable size.");
             Console.WriteLine("Input N (size of triangle)");
             int n = int.Parse(Console.ReadLine());
-            
+
             //the first half of the triangle
             for (int i = 1; i <= n; i++)
             {
@@ -214,7 +217,7 @@ namespace ConsoleApp1
             }
 
             //the second half of the triangle
-            for (int i = n-1; i >=1; i--)
+            for (int i = n - 1; i >= 1; i--)
             {
                 //build the current line of stars (from 1 to i)
                 StringBuilder sb = new StringBuilder();
@@ -234,8 +237,8 @@ namespace ConsoleApp1
             int n = int.Parse(Console.ReadLine());
 
             string resultInBinary = "";
-            
-            while(n>0)
+
+            while (n > 0)
             {
                 int rest = n % 2;
                 resultInBinary = rest + resultInBinary;
@@ -244,5 +247,88 @@ namespace ConsoleApp1
             Console.WriteLine($"The binary value of {n} is {resultInBinary}");
         }
 
+        //12. Write a program that by a given integer N prints the numbers from 1 to N in random order
+        static void RandomNumbers()
+        {
+            Console.WriteLine("12. Write a program that by a given integer N prints the numbers from 1 to N in random order");
+
+            Console.WriteLine("Input N");
+            int n;
+            n = int.Parse(Console.ReadLine());
+            int[] values = new int[n + 1];
+
+            int printedNumbers = 0;
+            for (int i = 1; i <= n; i++)
+            {
+                values[i] = i + 1;
+            }
+
+            Console.WriteLine("The numbers are:");
+            while (printedNumbers < n)
+            {
+                Random rd = new Random();
+                int currentNumber = rd.Next(1, n + 1);  //get a new random number
+                //check if the currentNumber wasn't already printed
+                if (values[currentNumber] != -1)
+                {
+                    Console.WriteLine(currentNumber);
+                    values[currentNumber] = -1;
+                    printedNumbers++; //one more number was just printed
+                }
+            }
+            Console.WriteLine("That's all, folks...");
+        }
+
+        //13. A program which iterates the integers from 1 to 50 For multiples of three print "Fizz" instead of the number and for the multiples of five print "Buzz". For numbers which are multiples of both three and five print "FizzBuzz".
+        static void FizzBuzz()
+        {
+            Console.WriteLine("13. A program which iterates the integers from 1 to 50 For multiples of three print \"Fizz\" instead of the number and for the multiples of five print \"Buzz\". For numbers which are multiples of both three and five print \"FizzBuzz\".");
+            for (int i = 1; i <= 50; i++)
+            {
+                if (i % 3 == 0 && i % 5 == 0)
+                    Console.WriteLine("FizzBuzz");
+                if (i % 3 == 0 && i % 5 != 0)
+                    Console.WriteLine("Fizz");
+                if (i % 5 == 0 && i % 3 != 0)
+                    Console.WriteLine("Buzz");
+                if (i % 5 != 0 && i % 3 != 0)
+                    Console.WriteLine(i);
+            }
+        }
+
+        //14. A given company has name, address, phone number, fax number, web site and manager. The manager has name, surname and phone number. Write a program that reads information about the company and its manager and then prints it on the console.
+        static void CompanyManagerData()
+        {
+            Console.WriteLine("14. A given company has name, address, phone number, fax number, web site and manager. The manager has name, surname and phone number. Write a program that reads information about the company and its manager and then prints it on the console.");
+            string cName, cAddress, cPhone, cFax, cWeb, cManager;
+            string mName, mSurname, mPhone;
+
+            Console.WriteLine("Input the data about the company:");
+
+            Console.WriteLine("Company name");
+            cName = Console.ReadLine();
+            Console.WriteLine("Company address");
+            cAddress = Console.ReadLine();
+            Console.WriteLine("Company phone");
+            cPhone = Console.ReadLine();
+            Console.WriteLine("Company fax");
+            cFax = Console.ReadLine();
+            Console.WriteLine("Company web site");
+            cWeb = Console.ReadLine();
+            Console.WriteLine("Company manager");
+            cManager = Console.ReadLine();
+
+            Console.WriteLine("\nInput the data about the manager:");
+            Console.WriteLine("Manager name");
+            mName = Console.ReadLine();
+            Console.WriteLine("Manager surname");
+            mSurname = Console.ReadLine();
+            Console.WriteLine("Manager phone");
+            mPhone = Console.ReadLine();
+
+            Console.WriteLine($"The company {cName} is located at {cAddress}. It has the phone fax numbers {cPhone} and {cFax}. " +
+                $"The website is {cWeb} and the manager is {cManager}");
+            Console.WriteLine($"The manger is {mName} {mSurname} and can be called at phone {mPhone}");
+        }
     }
 }
