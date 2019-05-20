@@ -53,7 +53,11 @@ namespace StringsBasicProblems
             //21. Write a method that takes a list of words and returns the length of the longest one.
             Console.WriteLine(LongestWord("Aici este un text si aflam lungimea celui mai mare cuvant din el"));
             //22. Write a method to get the last part of a string before a specified character.
-            Console.WriteLine(LastPart("Sa aflam cuvintele pana aici-de aici incolo nu mai vrem cuvinte",'-'));
+            Console.WriteLine(LastPart("Sa aflam cuvintele pana aici-de aici incolo nu mai vrem cuvinte", '-'));
+            //23. Write a method to check whether a string starts with specified characters
+            Console.WriteLine(StartWithLetters("Ana are mere...", "Ana"));
+            //24. Write a method to count occurrences of a substring in a string
+            Console.WriteLine(CountOccurrences("Aici e un text cu text repetitiv de tip text", "text"));
         }
 
         //1. Write a method that to remove the nth index character from a nonempty string.
@@ -327,5 +331,29 @@ namespace StringsBasicProblems
             return s.Substring(0, s.LastIndexOf(c));
         }
 
+        //23. Write a method to check whether a string starts with specified characters
+        //input: awesome string
+        //               a
+        //output : Yes, starts with a
+        static string StartWithLetters(string s, string c)
+        {
+            if (s.IndexOf(c) == 0)
+                return $"Yes, starts with {c}";
+            else
+                return $"No, it doesn't start with {c}";
+        }
+
+
+        //24. Write a method to count occurrences of a substring in a string
+        static int CountOccurrences(string s, string substring)
+        {
+            int countOccurrences = 0;
+            while (s.IndexOf(substring) >= 0)  //still have substrings in the string
+            {
+                countOccurrences++;
+                s = s.Remove(s.IndexOf(substring), substring.Length);
+            }
+            return countOccurrences;
+        }
     }
 }
