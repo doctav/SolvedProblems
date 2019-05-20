@@ -58,6 +58,10 @@ namespace StringsBasicProblems
             Console.WriteLine(StartWithLetters("Ana are mere...", "Ana"));
             //24. Write a method to count occurrences of a substring in a string
             Console.WriteLine(CountOccurrences("Aici e un text cu text repetitiv de tip text", "text"));
+            //25. Write a method to swap comma and dot in a string.
+            Console.WriteLine(SwapCommaDot("32.054,23"));
+            //26.         //26. Check if a string is palindrome (same value read from left to right and right to left) Ex: alabala -> True
+            Console.WriteLine(IsPalindrome("alabala"));
         }
 
         //1. Write a method that to remove the nth index character from a nonempty string.
@@ -355,5 +359,45 @@ namespace StringsBasicProblems
             }
             return countOccurrences;
         }
+
+        //25. Write a method to swap comma and dot in a string.
+
+        static string SwapCommaDot(string s)
+        {
+            for (int i = 0; i < s.Length; i++)
+            {
+                if(s[i].ToString() == ",")
+                {
+                    //change comma in a dot
+                    s = s.Remove(i, 1).Insert(i, ".");
+                    i++;
+                }
+
+                if(s[i].ToString() ==".")
+                {
+                    //change dot in a comma
+                    s = s.Remove(i, 1).Insert(i, ",");
+                    i++;
+                }
+            }
+
+            return s;
+        }
+
+        //26. Check if a string is palindrome (same value read from left to right and right to left) Ex: alabala -> True
+        static bool IsPalindrome(string s)
+        {
+            bool isPalindrome = true;
+            int n = s.Length / 2;
+            int i= 0;
+            while(isPalindrome && i<=n)
+            {
+                if (s[i].ToString() != s[s.Length - 1 - i].ToString())
+                    isPalindrome = false;
+                i++;  //next char in the string
+            }
+            return isPalindrome;
+        }
+
     }
 }
