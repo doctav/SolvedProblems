@@ -46,6 +46,8 @@ namespace StringsBasicProblems
             Console.WriteLine(RestringFirstLast2("A"));
             //18. Write a method to get a string from a given string where all occurrences of its first char have been changed to '$', except the first char itself.
             Console.WriteLine(ReplaceMyChar("restart"));
+            //19. Write a method to get a single string from two given strings, separated by a space and swap the first two characters of each string.
+            Console.WriteLine(SwapMyStrings("abc","xyz"));
         }
 
         //1. Write a method that to remove the nth index character from a nonempty string.
@@ -277,5 +279,10 @@ namespace StringsBasicProblems
             return s[0].ToString() + s.Substring(1).Replace(firstChar, '$');
         }
 
+        //19. Write a method to get a single string from two given strings, separated by a space and swap the first two characters of each string.
+        static string SwapMyStrings(string s1, string s2)
+        {
+            return s2[0].ToString() +s2[1].ToString() + s1.Substring(2) + " " + s1[0].ToString() + s1[1].ToString() + s2.Substring(2);
+        }
     }
 }
