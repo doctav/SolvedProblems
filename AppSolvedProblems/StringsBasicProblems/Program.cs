@@ -40,6 +40,12 @@ namespace StringsBasicProblems
             Console.WriteLine(IngLy("abc")); Console.WriteLine(IngLy("string"));
             //16. You have some text that contains your email address. And you want to hide that. You decide to censor your email: to replace all characters in it with asterisks ('*') except the domain. Assume your email address will always be in format [username]@[domain]. You need to replace the username with asterisks of equal number of letters and keep the domain unchanged. You will get as input the email address you need to obfuscate
             Console.WriteLine(ObfucateEmail("doctav@yahoo.com"));
+            //17. Write a method to get a string made of the first 2 and the last 2 chars from a given a string. If the string length is less than 2, return instead of the empty string.
+            Console.WriteLine(RestringFirstLast2("w3resource"));
+            Console.WriteLine(RestringFirstLast2("W3"));
+            Console.WriteLine(RestringFirstLast2("A"));
+            //18. Write a method to get a string from a given string where all occurrences of its first char have been changed to '$', except the first char itself.
+            Console.WriteLine(ReplaceMyChar("restart"));
         }
 
         //1. Write a method that to remove the nth index character from a nonempty string.
@@ -249,5 +255,27 @@ namespace StringsBasicProblems
             //generate the obfucate email address
             return string.Concat(sb, email.Substring(position));
         }
+
+        //17. Write a method to get a string made of the first 2 and the last 2 chars from a given a string. If the string length is less than 2, return instead of the empty string.
+        static string RestringFirstLast2(string s)
+        {
+            if (s.Length < 2)
+                return string.Empty;
+            else
+                return s[0].ToString() + s[1].ToString() + s[s.Length - 2].ToString() + s[s.Length - 1].ToString();
+        }
+
+        //18. Write a method to get a string from a given string where all occurrences of its first char have been changed to '$', except the first char itself.
+        static string ReplaceMyChar(string s)
+        {
+            if (s.Length==0)
+            {
+                return s;
+            }
+
+            char firstChar = s[0];
+            return s[0].ToString() + s.Substring(1).Replace(firstChar, '$');
+        }
+
     }
 }
