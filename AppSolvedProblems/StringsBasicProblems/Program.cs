@@ -20,6 +20,18 @@ namespace StringsBasicProblems
             Console.WriteLine(ConvertToUpper4("IoNElule"));
             //6. Write a method that to remove a newline.
             Console.WriteLine(RemoveNewLine("Ionel spune pe randul urmator \n o noua propozitie"));
+            //7. Write a method to display formatted text (width=50) as output. For example: If I have a text that's 134 characters long, the formatted string should have maximum of 50 characters per line. In this case we will have 3 lines of text.
+            DisplayRow50("Write a method to display formatted text (width=50) as output. For example: If I have a text that's 134 characters long, the formatted string should have maximum of 50 characters per line. In this case we will have 3 lines of text.");
+            //8. Write a method that formats a number with a percentage
+            Console.WriteLine(FormatPercentage(0.256));
+            //9. Write a method that reverses a string.
+            Console.WriteLine(ReverseMyString("Distractie Maxima"));
+            //10. Write a method that strips a set of characters from a string.
+            StripMyString("Aici este un sir mare care va fi afisat pe cuvinte.", ' ');
+            //11. Write a method that transforms to lowercase first n characters in a string
+            Console.WriteLine(TransformLowerFirstN("AiCi ESTe un text demonstrativ", 8));
+            //12. Write a method to capitalize first and last letters of each word of a given string.
+            Console.WriteLine(CapitalizeWords("ana are mere"));
         }
 
         //1. Write a method that to remove the nth index character from a nonempty string.
@@ -98,6 +110,77 @@ namespace StringsBasicProblems
             //remove the new line (2 characters)
             //s.Remove(position, 2);
             s = s.Replace("\n", String.Empty);
+            return s;
+        }
+
+        //7. Write a method to display formatted text (width=50) as output. For example: If I have a text that's 134 characters long, the formatted string should have maximum of 50 characters per line. In this case we will have 3 lines of text.
+        static void DisplayRow50(string s)
+        {
+            while (s.Length >= 50)
+            {
+                Console.WriteLine(s.Substring(0, 50));  //the first 50 chars from the string
+                s = s.Substring(49);  //the rest of the string
+            }
+            Console.WriteLine(s); //the "last tie"
+        }
+
+        //8. Write a method that formats a number with a percentage
+        static string FormatPercentage(double d)
+        {
+            return d.ToString("P2");
+        }
+
+        //9. Write a method that reverses a string.
+        static string ReverseMyString(string s)
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int i = s.Length - 1; i >= 0; i--)
+            {
+                sb.Append(s[i]);
+            }
+            return sb.ToString();
+        }
+
+        //10. Write a method that strips a set of characters from a string.
+        static void StripMyString(string s, char c)
+        {
+            string[] subsiruri = s.Split(c);
+            for (int i = 0; i < subsiruri.Length; i++)
+            {
+                Console.WriteLine(subsiruri[i].ToString());
+            }
+        }
+
+        //11. Write a method that transforms to lowercase first n characters in a string
+        static string TransformLowerFirstN(string s, int n)
+        {
+            string sirInitial = s.Substring(0, n);
+            sirInitial = sirInitial.Replace(sirInitial, sirInitial.ToLower());
+            return sirInitial + s.Substring(n);
+        }
+
+        //12. Write a method to capitalize first and last letters of each word of a given string.
+        static string CapitalizeWords(string s)
+        {
+            string currentLetter;
+            if (s.Length > 0)
+            {
+                currentLetter = s[0].ToString();  //get the first letter from the string
+                s=s.Remove(0,1).Insert(0, currentLetter.ToUpper()); //capitalize the first letter
+
+                //process the "core" of the string
+                for (int i = 1; i < s.Length - 1; i++)
+                {
+                     currentLetter = s[i].ToString();
+                    if (s[i + 1].ToString() == " " || s[i - 1].ToString() == " ")
+                    {
+                        s=s.Remove(i,1).Insert(i, currentLetter.ToUpper());
+                    }
+                }
+
+                currentLetter = s[s.Length-1].ToString();  //get the last letter from the string
+                s=s.Remove(s.Length-1,1).Insert(s.Length-1, currentLetter.ToUpper()); //capitalize the last letter
+            }
             return s;
         }
 
