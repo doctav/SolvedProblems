@@ -48,6 +48,8 @@ namespace StringsBasicProblems
             Console.WriteLine(ReplaceMyChar("restart"));
             //19. Write a method to get a single string from two given strings, separated by a space and swap the first two characters of each string.
             Console.WriteLine(SwapMyStrings("abc","xyz"));
+            //20. Write a method to find the first appearance of the substring 'not' and 'poor' from a given string, if 'not' follows the 'poor', replace the whole 'not'...'poor' substring with 'good'. Return the resulting string.
+            Console.WriteLine(ReplaceNotPoor("The lyrics is not that poor!"));
         }
 
         //1. Write a method that to remove the nth index character from a nonempty string.
@@ -283,6 +285,19 @@ namespace StringsBasicProblems
         static string SwapMyStrings(string s1, string s2)
         {
             return s2[0].ToString() +s2[1].ToString() + s1.Substring(2) + " " + s1[0].ToString() + s1[1].ToString() + s2.Substring(2);
+        }
+
+        //20. Write a method to find the first appearance of the substring 'not' and 'poor' from a given string, if 'not' follows the 'poor', replace the whole 'not'...'poor' substring with 'good'. Return the resulting string.
+        static string ReplaceNotPoor(string s)
+        {
+            int notPosition = s.IndexOf("not");
+            int poorPosition = s.IndexOf("poor");
+
+            if (poorPosition>notPosition)   //replace not...poor with good
+            {
+                s = s.Substring(0, notPosition - 1).ToString() + " good" + s.Substring(poorPosition + 4).ToString();
+            }
+            return s;
         }
     }
 }
