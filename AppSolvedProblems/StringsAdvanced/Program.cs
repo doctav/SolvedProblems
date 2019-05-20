@@ -7,13 +7,17 @@ namespace StringsAdvanced
         static void Main(string[] args)
         {
             Console.WriteLine("Problems solved for: https://github.com/irinascurtu/siit-net/blob/master/strings-advanced.md");
-            
+
             //1. Middle Characther
             Console.WriteLine(MiddleCharacter("test"));
             Console.WriteLine(MiddleCharacter("testing"));
 
             //2. The goal of this kata is to write a function that takes two inputs: a string and a character. The function will count the number of times that character appears in the string. The count is case insensitive.
             Console.WriteLine(CountMyChar("fizzbuzz", 'z'));
+
+            //3. Facebook like
+            string[] names = new string[] { "John", "Mark", "Tavy", "Elsa" };
+            Console.WriteLine(FacebookLike(names));
         }
 
         //1. Middle Characther
@@ -38,6 +42,22 @@ namespace StringsAdvanced
                 s = s.Remove(s.IndexOf(c), 1);
             }
             return countOccurrences;
+        }
+
+        ////3. You probably know the "like" system from Facebook and other pages. People can "like" blog posts, pictures or other items. We want to create the text that should be displayed next to such an item.
+        //Implement a function likes :: [String] -> String, which must take in input array, containing the names of people who like an item.It must return the display text as shown in the examples:
+        //likes[] // must be "no one likes this" likes ["Peter"] // must be "Peter likes this" likes ["Jacob", "Alex"] // must be "Jacob and Alex like this" likes ["Max", "John", "Mark"] // must be "Max, John and Mark like this" likes ["Alex", "Jacob", "Mark", "Max"] // must be "Alex, Jacob and 2 others like this"
+        static string FacebookLike(string[] s)
+        {
+            if (s.Length == 0)
+                return "No one likes this";
+            if (s.Length == 1)
+                return s[0] + " likes this.";
+            if (s.Length == 2)
+                return s[0] + " and " + s[1] + " like this.";
+            if (s.Length == 3)
+                return s[0] + "," + s[1] + " and " + s[2] + " like this.";
+            return s[0] + ", " + s[1] + " and " + (s.Length - 2).ToString() + " others like this.";
         }
     }
 }
