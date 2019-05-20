@@ -32,6 +32,10 @@ namespace StringsBasicProblems
             Console.WriteLine(TransformLowerFirstN("AiCi ESTe un text demonstrativ", 8));
             //12. Write a method to capitalize first and last letters of each word of a given string.
             Console.WriteLine(CapitalizeWords("ana are mere"));
+            //13. Write a method to compute sum of digits of a given string(if any).
+            Console.WriteLine(SumOfDigitsFromString("Aici am valoare 45 si valoarea 32. Cat e suma cifrelor?"));
+            //14. You will get a text from where you will need to clean the text because it contains a lot of strange characters that don’t belong there ( ^ <, > &+ @%$)
+            Console.WriteLine(CleanMyText("Hi^>there<<I’m+ telling%%you, you &need% to$ do& your $homeworks. @Hate ^me^ %now% and %thank% me &later."));
         }
 
         //1. Write a method that to remove the nth index character from a nonempty string.
@@ -181,6 +185,35 @@ namespace StringsBasicProblems
                 currentLetter = s[s.Length-1].ToString();  //get the last letter from the string
                 s=s.Remove(s.Length-1,1).Insert(s.Length-1, currentLetter.ToUpper()); //capitalize the last letter
             }
+            return s;
+        }
+
+
+        //13. Write a method to compute sum of digits of a given string(if any).
+        static int SumOfDigitsFromString(string s)
+        {
+            int sum = 0;
+            
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i].CompareTo('0')>=0  && s[i].CompareTo('9')<=0) //check is the current letter is a digit
+                {
+                    sum = sum + int.Parse(s[i].ToString());
+                }
+            }
+
+            return sum;
+        }
+
+        //14. You will get a text from where you will need to clean the text because it contains a lot of strange characters that don’t belong there ( ^ <, > &+ @%$)
+        static string CleanMyText(string s)
+        {
+            string[] badValues = new string[] {"^", "<", "," , ">", "$", "&","@", "+", "%", "&+", "@%$"};
+            for (int i = 0; i < badValues.Length; i++)
+            {
+                s = s.Replace(badValues[i], " ");
+            }
+
             return s;
         }
 
