@@ -47,9 +47,13 @@ namespace StringsBasicProblems
             //18. Write a method to get a string from a given string where all occurrences of its first char have been changed to '$', except the first char itself.
             Console.WriteLine(ReplaceMyChar("restart"));
             //19. Write a method to get a single string from two given strings, separated by a space and swap the first two characters of each string.
-            Console.WriteLine(SwapMyStrings("abc","xyz"));
+            Console.WriteLine(SwapMyStrings("abc", "xyz"));
             //20. Write a method to find the first appearance of the substring 'not' and 'poor' from a given string, if 'not' follows the 'poor', replace the whole 'not'...'poor' substring with 'good'. Return the resulting string.
             Console.WriteLine(ReplaceNotPoor("The lyrics is not that poor!"));
+            //21. Write a method that takes a list of words and returns the length of the longest one.
+            Console.WriteLine(LongestWord("Aici este un text si aflam lungimea celui mai mare cuvant din el"));
+            //22. Write a method to get the last part of a string before a specified character.
+            Console.WriteLine(LastPart("Sa aflam cuvintele pana aici-de aici incolo nu mai vrem cuvinte",'-'));
         }
 
         //1. Write a method that to remove the nth index character from a nonempty string.
@@ -184,20 +188,20 @@ namespace StringsBasicProblems
             if (s.Length > 0)
             {
                 currentLetter = s[0].ToString();  //get the first letter from the string
-                s=s.Remove(0,1).Insert(0, currentLetter.ToUpper()); //capitalize the first letter
+                s = s.Remove(0, 1).Insert(0, currentLetter.ToUpper()); //capitalize the first letter
 
                 //process the "core" of the string
                 for (int i = 1; i < s.Length - 1; i++)
                 {
-                     currentLetter = s[i].ToString();
+                    currentLetter = s[i].ToString();
                     if (s[i + 1].ToString() == " " || s[i - 1].ToString() == " ")
                     {
-                        s=s.Remove(i,1).Insert(i, currentLetter.ToUpper());
+                        s = s.Remove(i, 1).Insert(i, currentLetter.ToUpper());
                     }
                 }
 
-                currentLetter = s[s.Length-1].ToString();  //get the last letter from the string
-                s=s.Remove(s.Length-1,1).Insert(s.Length-1, currentLetter.ToUpper()); //capitalize the last letter
+                currentLetter = s[s.Length - 1].ToString();  //get the last letter from the string
+                s = s.Remove(s.Length - 1, 1).Insert(s.Length - 1, currentLetter.ToUpper()); //capitalize the last letter
             }
             return s;
         }
@@ -207,10 +211,10 @@ namespace StringsBasicProblems
         static int SumOfDigitsFromString(string s)
         {
             int sum = 0;
-            
+
             for (int i = 0; i < s.Length; i++)
             {
-                if (s[i].CompareTo('0')>=0  && s[i].CompareTo('9')<=0) //check is the current letter is a digit
+                if (s[i].CompareTo('0') >= 0 && s[i].CompareTo('9') <= 0) //check is the current letter is a digit
                 {
                     sum = sum + int.Parse(s[i].ToString());
                 }
@@ -222,7 +226,7 @@ namespace StringsBasicProblems
         //14. You will get a text from where you will need to clean the text because it contains a lot of strange characters that don’t belong there ( ^ <, > &+ @%$)
         static string CleanMyText(string s)
         {
-            string[] badValues = new string[] {"^", "<", "," , ">", "$", "&","@", "+", "%", "&+", "@%$"};
+            string[] badValues = new string[] { "^", "<", ",", ">", "$", "&", "@", "+", "%", "&+", "@%$" };
             for (int i = 0; i < badValues.Length; i++)
             {
                 s = s.Replace(badValues[i], " ");
@@ -234,7 +238,7 @@ namespace StringsBasicProblems
         //15. Write a method to add 'ing' at the end of a given string (length should be at least 3). If the given string already ends with 'ing' then add 'ly' instead. If the string length of the given string is less than 3, leave it unchanged.
         static string IngLy(string s)
         {
-            if(s.Length>=3)
+            if (s.Length >= 3)
             {
                 if (s.Substring(s.Length - 3) == "ing")
                     s = s + "ly";
@@ -272,7 +276,7 @@ namespace StringsBasicProblems
         //18. Write a method to get a string from a given string where all occurrences of its first char have been changed to '$', except the first char itself.
         static string ReplaceMyChar(string s)
         {
-            if (s.Length==0)
+            if (s.Length == 0)
             {
                 return s;
             }
@@ -284,7 +288,7 @@ namespace StringsBasicProblems
         //19. Write a method to get a single string from two given strings, separated by a space and swap the first two characters of each string.
         static string SwapMyStrings(string s1, string s2)
         {
-            return s2[0].ToString() +s2[1].ToString() + s1.Substring(2) + " " + s1[0].ToString() + s1[1].ToString() + s2.Substring(2);
+            return s2[0].ToString() + s2[1].ToString() + s1.Substring(2) + " " + s1[0].ToString() + s1[1].ToString() + s2.Substring(2);
         }
 
         //20. Write a method to find the first appearance of the substring 'not' and 'poor' from a given string, if 'not' follows the 'poor', replace the whole 'not'...'poor' substring with 'good'. Return the resulting string.
@@ -293,11 +297,35 @@ namespace StringsBasicProblems
             int notPosition = s.IndexOf("not");
             int poorPosition = s.IndexOf("poor");
 
-            if (poorPosition>notPosition)   //replace not...poor with good
+            if (poorPosition > notPosition)   //replace not...poor with good
             {
                 s = s.Substring(0, notPosition - 1).ToString() + " good" + s.Substring(poorPosition + 4).ToString();
             }
             return s;
         }
+
+        //21. Write a method that takes a list of words and returns the length of the longest one.
+        static int LongestWord(string s)
+        {
+            string[] words = s.Split(" ");
+            int maxLength = words[0].Length;
+
+            for (int i = 1; i < words.Length; i++)
+            {
+                if (maxLength < words[i].Length)
+                    maxLength = words[i].Length;
+            }
+
+            return maxLength;
+        }
+
+        //22. Write a method to get the last part of a string before a specified character.
+        //Input :  https://www.siit.com/net-exercises
+        //Output:  https://www.siit.com/net
+        static string LastPart(string s, char c)
+        {
+            return s.Substring(0, s.LastIndexOf(c));
+        }
+
     }
 }
