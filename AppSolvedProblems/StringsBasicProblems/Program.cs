@@ -36,6 +36,10 @@ namespace StringsBasicProblems
             Console.WriteLine(SumOfDigitsFromString("Aici am valoare 45 si valoarea 32. Cat e suma cifrelor?"));
             //14. You will get a text from where you will need to clean the text because it contains a lot of strange characters that don’t belong there ( ^ <, > &+ @%$)
             Console.WriteLine(CleanMyText("Hi^>there<<I’m+ telling%%you, you &need% to$ do& your $homeworks. @Hate ^me^ %now% and %thank% me &later."));
+            //15. Write a method to add 'ing' at the end of a given string (length should be at least 3). If the given string already ends with 'ing' then add 'ly' instead. If the string length of the given string is less than 3, leave it unchanged.
+            Console.WriteLine(IngLy("abc")); Console.WriteLine(IngLy("string"));
+            //16. You have some text that contains your email address. And you want to hide that. You decide to censor your email: to replace all characters in it with asterisks ('*') except the domain. Assume your email address will always be in format [username]@[domain]. You need to replace the username with asterisks of equal number of letters and keep the domain unchanged. You will get as input the email address you need to obfuscate
+            Console.WriteLine(ObfucateEmail("doctav@yahoo.com"));
         }
 
         //1. Write a method that to remove the nth index character from a nonempty string.
@@ -217,6 +221,33 @@ namespace StringsBasicProblems
             return s;
         }
 
+        //15. Write a method to add 'ing' at the end of a given string (length should be at least 3). If the given string already ends with 'ing' then add 'ly' instead. If the string length of the given string is less than 3, leave it unchanged.
+        static string IngLy(string s)
+        {
+            if(s.Length>=3)
+            {
+                if (s.Substring(s.Length - 3) == "ing")
+                    s = s + "ly";
+                else
+                    s = s + "ing";
+            }
+            return s;
+        }
 
+        //16. You have some text that contains your email address. And you want to hide that. You decide to censor your email: to replace all characters in it with asterisks ('*') except the domain. Assume your email address will always be in format [username]@[domain]. You need to replace the username with asterisks of equal number of letters and keep the domain unchanged. You will get as input the email address you need to obfuscate
+        //Input: awesome@dotnet.com
+        //Output: *******@dotnet.com
+        static string ObfucateEmail(string email)
+        {
+            int position = email.IndexOf("@");
+            //build the hidden string with "*"
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < position; i++)
+            {
+                sb.Append("*");
+            }
+            //generate the obfucate email address
+            return string.Concat(sb, email.Substring(position));
+        }
     }
 }
