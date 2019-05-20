@@ -18,6 +18,10 @@ namespace StringsAdvanced
             //3. Facebook like
             string[] names = new string[] { "John", "Mark", "Tavy", "Elsa" };
             Console.WriteLine(FacebookLike(names));
+
+            //4. Ho ho ho!!! Santa Claus
+            Console.WriteLine(Ho());
+            Console.WriteLine(Ho(Ho(Ho())));
         }
 
         //1. Middle Characther
@@ -58,6 +62,20 @@ namespace StringsAdvanced
             if (s.Length == 3)
                 return s[0] + "," + s[1] + " and " + s[2] + " like this.";
             return s[0] + ", " + s[1] + " and " + (s.Length - 2).ToString() + " others like this.";
+        }
+
+        //4. Ho ho ho!!! Santa Claus
+        //Santa is learning programming.And what could be the first program, he wants to write? Yes, the "Hello world!" of Christmas: "Ho Ho Ho!". He wants to write a function ho(), which should have the following return values:
+        //ho(); // should return "Ho!" ho(ho()); // should return "Ho Ho!" ho(ho(ho())); // should return "Ho Ho Ho!" Unfortunately he couldn't find any tutorial, which explains, how he could implement that. Can you help him?
+        //Rules:
+        //each call of ho() must add a "Ho" to the string the "Ho"'s must be separated by a space at the end of the string, there must be an exclamation mark (!), without a space
+        static string Ho()
+        {
+            return "Ho!";
+        }
+        static string Ho(string s)
+        {
+            return "Ho " + s.ToLower();
         }
     }
 }
