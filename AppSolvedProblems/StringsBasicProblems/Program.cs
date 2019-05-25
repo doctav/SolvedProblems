@@ -61,6 +61,7 @@ namespace StringsBasicProblems
             //25. Write a method to swap comma and dot in a string.
             Console.WriteLine(SwapCommaDot("32.054,23"));
             //26.         //26. Check if a string is palindrome (same value read from left to right and right to left) Ex: alabala -> True
+
             Console.WriteLine(IsPalindrome("alabala"));
         }
 
@@ -238,6 +239,7 @@ namespace StringsBasicProblems
             for (int i = 0; i < badValues.Length; i++)
             {
                 s = s.Replace(badValues[i], " ");
+                
             }
 
             return s;
