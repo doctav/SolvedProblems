@@ -68,7 +68,7 @@ namespace StringsBasicProblems
         //1. Write a method that to remove the nth index character from a nonempty string.
         static string removeNthCharacter(string s, int n)
         {
-            if (s != string.Empty)
+            if (s != string.Empty) 
                 return s.Remove(n, 1);
             else
                 return s;
