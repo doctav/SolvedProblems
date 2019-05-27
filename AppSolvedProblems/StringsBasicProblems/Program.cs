@@ -31,7 +31,8 @@ namespace StringsBasicProblems
             //11. Write a method that transforms to lowercase first n characters in a string
             Console.WriteLine(TransformLowerFirstN("AiCi ESTe un text demonstrativ", 8));
             //12. Write a method to capitalize first and last letters of each word of a given string.
-            Console.WriteLine(CapitalizeWords("ana are mere"));
+            //Console.WriteLine(CapitalizeWords("ana are mere"));
+            Console.WriteLine(CapitalizeWords2("ana are mere"));
             //13. Write a method to compute sum of digits of a given string(if any).
             Console.WriteLine(SumOfDigitsFromString("Aici am valoare 45 si valoarea 32. Cat e suma cifrelor?"));
             //14. You will get a text from where you will need to clean the text because it contains a lot of strange characters that don’t belong there ( ^ <, > &+ @%$)
@@ -68,7 +69,7 @@ namespace StringsBasicProblems
         //1. Write a method that to remove the nth index character from a nonempty string.
         static string removeNthCharacter(string s, int n)
         {
-            if (s != string.Empty)
+            if (s != string.Empty && s.Length>=n)  //CHECK IF THERE ARE AT LEAST "N" CHARACTERS
                 return s.Remove(n, 1);
             else
                 return s;
@@ -214,7 +215,24 @@ namespace StringsBasicProblems
             }
             return s;
         }
+        //SECOND VERSION
+        static string CapitalizeWords2(string s)
+        {
+            string[] words = s.Split(" ");
+            StringBuilder sb = new StringBuilder();
 
+            for (int i = 0; i < words.Length; i++)
+            {
+                sb.Append(FirstLetterCapitalized(words[i]));
+                sb.Append(" ");
+            }
+
+            return sb.ToString();
+        }
+        static string FirstLetterCapitalized(string s)
+        {
+            return char.ToUpper(s[0]).ToString() + s.Substring(1);
+        }
 
         //13. Write a method to compute sum of digits of a given string(if any).
         static int SumOfDigitsFromString(string s)
@@ -238,7 +256,7 @@ namespace StringsBasicProblems
             string[] badValues = new string[] { "^", "<", ",", ">", "$", "&", "@", "+", "%", "&+", "@%$" };
             for (int i = 0; i < badValues.Length; i++)
             {
-                s = s.Replace(badValues[i], " ");
+                s = s.Replace(badValues[i], String.Empty);
                 
             }
 
@@ -271,7 +289,7 @@ namespace StringsBasicProblems
                 sb.Append("*");
             }
             //generate the obfucate email address
-            return string.Concat(sb, email.Substring(position));
+            return sb.Append(email.Substring(position)).ToString();
         }
 
         //17. Write a method to get a string made of the first 2 and the last 2 chars from a given a string. If the string length is less than 2, return instead of the empty string.
