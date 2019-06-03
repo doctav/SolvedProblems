@@ -13,7 +13,7 @@ namespace StringsAdvanced
             Console.WriteLine(MiddleCharacter("testing"));
 
             //2. The goal of this kata is to write a function that takes two inputs: a string and a character. The function will count the number of times that character appears in the string. The count is case insensitive.
-            Console.WriteLine(CountMyChar("fizzbuzz", 'z'));
+            Console.WriteLine(CountMyChar("fizzbuzz", 'Z'));
 
             //3. Facebook like
             string[] names = new string[] { "John", "Mark", "Tavy", "Elsa" };
@@ -40,11 +40,19 @@ namespace StringsAdvanced
         static int CountMyChar(string s, char c)
         {
             int countOccurrences = 0;
-            while (s.IndexOf(c) >= 0)  //still have substrings in the string
+            //for LOWERs (according to Irina's remark)
+            while (s.IndexOf(c.ToString().ToLower()) >= 0)  //still have substrings in the string
             {
                 countOccurrences++;
-                s = s.Remove(s.IndexOf(c), 1);
+                s = s.Remove(s.IndexOf(c.ToString().ToLower()), 1);
             }
+            //for UPPERs (according to Irina's remark)
+            while (s.IndexOf(c.ToString().ToUpper()) >= 0)  //still have substrings in the string
+            {
+                countOccurrences++;
+                s = s.Remove(s.IndexOf(c.ToString().ToUpper()), 1);
+            }
+
             return countOccurrences;
         }
 

@@ -148,10 +148,17 @@ namespace StringsBasicProblems
         //7. Write a method to display formatted text (width=50) as output. For example: If I have a text that's 134 characters long, the formatted string should have maximum of 50 characters per line. In this case we will have 3 lines of text.
         static void DisplayRow50(string s)
         {
+            //let's fill the string so that it be a multiple of 50s (according to Irina's request)
+            int n = 50 - s.Length % 50;
+            for (int i = 1; i <= n; i++)
+            {
+                s = s + "*";
+            }
+
             while (s.Length >= 50)
             {
                 Console.WriteLine(s.Substring(0, 50));  //the first 50 chars from the string
-                s = s.Substring(49);  //the rest of the string
+                s = s.Substring(50);  //the rest of the string
             }
             Console.WriteLine(s); //the "last tie"
         }
