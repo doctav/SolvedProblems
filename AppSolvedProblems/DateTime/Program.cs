@@ -31,6 +31,18 @@ namespace DateTimeProblems
 
             //5. Write a program to get current time in milliseconds.
             GetCurrentTimeInMilliseconds();
+
+            //6. Write a program that calculates the date six months from the current date.
+            SixMonthsFromCurrentDate();
+
+            ////7. Write a program to get the first and last second of a day.
+            DateTime today = DateTime.Now;
+            FirstAndLastSecondOfDay(today);
+
+            //8. Write a program to calculate two date difference in seconds.
+            DateTime date1 = DateTime.Now;
+            DateTime date2 = new DateTime(2019, 12, 30);
+            DifferenceInSeconds(date1, date2);
         }
 
         //1. Write a program to display the:
@@ -97,6 +109,31 @@ namespace DateTimeProblems
             DateTime currentDate = DateTime.Now;
             decimal totalMilliseconds = currentDate.TimeOfDay.Milliseconds + 1000 * currentDate.TimeOfDay.Seconds + 1000 * 60 * currentDate.TimeOfDay.Minutes + 1000 * 60 * 60 * currentDate.TimeOfDay.Hours;
             Console.WriteLine($"Current date in milliseconds: {totalMilliseconds}");
+        }
+
+        //6. Write a program that calculates the date six months from the current date.
+        public static void SixMonthsFromCurrentDate()
+        {
+            DateTime currentDate = DateTime.Now;
+            DateTime nexttDate = currentDate.AddMonths(6);
+            Console.WriteLine($"{currentDate} after six months: {nexttDate}");
+        }
+
+        //7. Write a program to get the first and last second of a day.
+        public static void FirstAndLastSecondOfDay(DateTime day)
+        {
+            DateTime beginingOfTheDay = new DateTime(day.Year, day.Month, day.Day);
+            DateTime endOfTheDay = beginingOfTheDay.AddHours(24);
+            TimeSpan intervalOneMillisecond = TimeSpan.FromMilliseconds(1);
+            endOfTheDay = endOfTheDay - intervalOneMillisecond;
+            Console.WriteLine($"Beginning of the day: {beginingOfTheDay}. End of the day: {endOfTheDay}");
+        }
+
+        //8. Write a program to calculate two date difference in seconds.
+        public static void DifferenceInSeconds(DateTime date1, DateTime date2)
+        {
+            TimeSpan diferenta = date2 - date1;
+            Console.WriteLine($"The difference (seconds) between {date2} and {date1} is: {diferenta.TotalSeconds}");
         }
 
     }
