@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicsProblems", "ConsoleApp1\BasicsProblems.csproj", "{A075DA07-93BA-4AF4-A897-7E4A2BCDF626}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringsBasicProblems", "StringsBasicProblems\StringsBasicProblems.csproj", "{A253B64B-3A0C-43C1-923C-85506671FA75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringsBasicProblems", "StringsBasicProblems\StringsBasicProblems.csproj", "{A253B64B-3A0C-43C1-923C-85506671FA75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringsAdvanced", "StringsAdvanced\StringsAdvanced.csproj", "{C28C556F-CA88-40BA-9442-44FD8ADBC021}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringsAdvanced", "StringsAdvanced\StringsAdvanced.csproj", "{C28C556F-CA88-40BA-9442-44FD8ADBC021}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arrays", "Arrays\Arrays.csproj", "{FB7C4601-EA3A-4E96-8440-3E4ABA012D28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arrays", "Arrays\Arrays.csproj", "{FB7C4601-EA3A-4E96-8440-3E4ABA012D28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateTimeProblems", "DateTime\DateTimeProblems.csproj", "{9F3A0889-AA23-42B8-AE48-514304507599}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{FB7C4601-EA3A-4E96-8440-3E4ABA012D28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB7C4601-EA3A-4E96-8440-3E4ABA012D28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB7C4601-EA3A-4E96-8440-3E4ABA012D28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F3A0889-AA23-42B8-AE48-514304507599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F3A0889-AA23-42B8-AE48-514304507599}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F3A0889-AA23-42B8-AE48-514304507599}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F3A0889-AA23-42B8-AE48-514304507599}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

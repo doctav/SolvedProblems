@@ -343,8 +343,8 @@ namespace Arrays
                     Console.Write(matrix3[i, j] + " ");
                 }
             }
-            Console.WriteLine();
+            Console.WriteLine();  //a new line
         }
-
+        
     }
 }
