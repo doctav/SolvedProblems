@@ -43,6 +43,11 @@ namespace DateTimeProblems
             DateTime date1 = DateTime.Now;
             DateTime date2 = new DateTime(2019, 12, 30);
             DifferenceInSeconds(date1, date2);
+
+            //9. Given a date of birth, calculate the age of a person.
+            //Input: 10, 09, 1989 
+            //Output: 29
+            CalculateAge();
         }
 
         //1. Write a program to display the:
@@ -136,5 +141,26 @@ namespace DateTimeProblems
             Console.WriteLine($"The difference (seconds) between {date2} and {date1} is: {diferenta.TotalSeconds}");
         }
 
+        //9. Given a date of birth, calculate the age of a person.
+        //Input: 10, 09, 1989 
+        //Output: 29
+        public static void CalculateAge()
+        {
+            string birth = "10, 09, 1989";
+            int day = int.Parse(birth.Substring(0, birth.IndexOf(',')));
+            birth = birth.Substring(birth.IndexOf(',') + 1);
+            int month = int.Parse(birth.Substring(0,birth.IndexOf(',')));
+            birth = birth.Substring(birth.IndexOf(',') + 1);
+            int year = int.Parse(birth);
+            //build the date in C# format
+            DateTime birthDate = new DateTime(year, month, day);
+            DateTime currentDate = DateTime.Today;
+            //calculate the age
+            int age = currentDate.Year - birthDate.Year;
+
+            if (currentDate.Month < birthDate.Month || (currentDate.Month == birthDate.Month && currentDate.Day < birthDate.Day))
+                age--;
+            Console.WriteLine($"Age = {age} years.");
+        }
     }
 }
