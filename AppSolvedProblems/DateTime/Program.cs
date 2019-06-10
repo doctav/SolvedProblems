@@ -14,7 +14,7 @@ namespace DateTimeProblems
             //c) Month of year
             //d) Week number of the year
             //e) Weekday of the week
-            //f) Day of year
+            //f) Day of year 
             //g) Day of the month
             //h) Day of week
             //j) if the current year is a leap year or not
@@ -48,6 +48,19 @@ namespace DateTimeProblems
             //Input: 10, 09, 1989 
             //Output: 29
             CalculateAge();
+
+            //10. Write a program to get the dates 30 days before and after from the current date, and display it to the console
+            DaysBeforeAfter30();
+
+            //11. Write a program to calculate a number of days between two dates.
+            DifferenceInDays(date1, date2);
+
+            //12. Write a program to print yesterday, today, tomorrow.
+            YesterdayTodayTomorrow();
+
+            //10. Write program to print next 5 days starting from today.
+            Next5Days();
+
         }
 
         //1. Write a program to display the:
@@ -149,7 +162,7 @@ namespace DateTimeProblems
             string birth = "10, 09, 1989";
             int day = int.Parse(birth.Substring(0, birth.IndexOf(',')));
             birth = birth.Substring(birth.IndexOf(',') + 1);
-            int month = int.Parse(birth.Substring(0,birth.IndexOf(',')));
+            int month = int.Parse(birth.Substring(0, birth.IndexOf(',')));
             birth = birth.Substring(birth.IndexOf(',') + 1);
             int year = int.Parse(birth);
             //build the date in C# format
@@ -162,5 +175,53 @@ namespace DateTimeProblems
                 age--;
             Console.WriteLine($"Age = {age} years.");
         }
+
+        //10. Write a program to get the dates 30 days before and after from the current date, and display it to the console
+        public static void DaysBeforeAfter30()
+        {
+            DateTime currentDate = DateTime.Today;
+            TimeSpan period = new TimeSpan(30, 0, 0, 0);
+            DateTime beforeDate = currentDate - period;
+            DateTime afterDate = currentDate + period;
+            Console.WriteLine($"Current date is {currentDate}. 30 days before is {beforeDate}. 30 days after is {afterDate}");
+        }
+
+        //11. Write a program to calculate a number of days between two dates.
+        public static void DifferenceInDays(DateTime date1, DateTime date2)
+        {
+            TimeSpan diferenta = date2 - date1;
+            Console.WriteLine($"The difference (days) between {date2} and {date1} is: {diferenta.Days}");
+        }
+
+        //12. Write a program to print yesterday, today, tomorrow.
+        public static void YesterdayTodayTomorrow()
+        {
+            DateTime today = DateTime.Today;
+            TimeSpan oneDay = new TimeSpan(1, 0, 0, 0);
+            DateTime yesterday = today - oneDay;
+            DateTime tomorrow = today + oneDay;
+            Console.WriteLine($"Yesterday: {yesterday.ToString("yyyy-MM-dd")}");
+            Console.WriteLine($"Today: {today.ToString("yyyy-MM-dd")}");
+            Console.WriteLine($"Tomorrow: {tomorrow.ToString("yyyy-MM-dd")}");
+
+        }
+
+        //10. Write program to print next 5 days starting from today.
+        public static void Next5Days()
+        {
+            Console.WriteLine();
+            DateTime today = DateTime.Today;
+            TimeSpan oneDay = new TimeSpan(1, 0, 0, 0);
+            for (int i = 0; i < 5; i++)
+            {
+                today = today + oneDay;
+                Console.WriteLine($"Day {i + 1} is: {today.ToString("yyyy-MM-dd")}");
+            }
+        }
+
+        //*11. Write a program to find the date of the first Monday of a given week
+        //Input  : 2015, 50
+        //Output : Mon Dec 14 00:00:00 2015      
+
     }
 }
