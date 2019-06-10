@@ -66,6 +66,13 @@ namespace DateTimeProblems
             //Output : Mon Dec 14 00:00:00 2015  
             FirstMonday();
 
+            //*12. Write a program to get days between two dates.
+            date1 = DateTime.Now;
+            date2 = new DateTime(2019, 11, 30);
+            DaysBetween2Dates(date1, date2);
+
+            //13. Write a program to select all the Sundays of a specified year and display their dates
+            AllTheSundays(2020);
         }
 
         //1. Write a program to display the:
@@ -240,5 +247,29 @@ namespace DateTimeProblems
             }
             Console.WriteLine($"The first Monday in the week {weeks} of the year {year} is on {myDate}");
         }
+
+        //*12. Write a program to get days between two dates.
+        public static void DaysBetween2Dates(DateTime date1, DateTime date2)
+        {
+            TimeSpan difference = date2 - date1;
+            Console.WriteLine($"The number of days between {date2} and {date1} is: {difference.Days}");
+        }
+
+        //*13. Write a program to select all the Sundays of a specified year and display their dates
+        public static void AllTheSundays(int year)
+        {
+            DateTime currentDate = new DateTime(year, 1, 1); //first day of the year
+            TimeSpan oneDay = new TimeSpan(1, 0, 0, 0); //day by day we'll check the days of the year
+            while(year == currentDate.Year)
+            {
+                if (currentDate.DayOfWeek==DayOfWeek.Sunday)
+                {
+                    Console.WriteLine($"Sunday: {currentDate.ToString("yyyy-MM-dd")}");
+                }
+                currentDate += oneDay;
+
+            }
+        }
+
     }
 }
