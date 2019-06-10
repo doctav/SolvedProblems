@@ -61,6 +61,11 @@ namespace DateTimeProblems
             //10. Write program to print next 5 days starting from today.
             Next5Days();
 
+            //*11. Write a program to find the date of the first Monday of a given week
+            //Input  : 2015, 50
+            //Output : Mon Dec 14 00:00:00 2015  
+            FirstMonday();
+
         }
 
         //1. Write a program to display the:
@@ -222,6 +227,18 @@ namespace DateTimeProblems
         //*11. Write a program to find the date of the first Monday of a given week
         //Input  : 2015, 50
         //Output : Mon Dec 14 00:00:00 2015      
-
+        public static void FirstMonday()
+        {
+            int year = 2015;  //or from the console
+            int weeks = 50;   //or from the console
+            TimeSpan weeksAdded = new TimeSpan(7 * weeks, 0, 0, 0);  //350 days will be added to the first day of the year (50 weeks x 7 days)
+            DateTime myDate = new DateTime(year, 1, 1) + weeksAdded;
+            while (myDate.DayOfWeek != DayOfWeek.Monday)  //get back until the first Monday
+            {
+                TimeSpan oneDay = new TimeSpan(1, 0, 0, 0);
+                myDate = myDate - oneDay;
+            }
+            Console.WriteLine($"The first Monday in the week {weeks} of the year {year} is on {myDate}");
+        }
     }
 }
